@@ -1,17 +1,30 @@
+$info-bg-color: #120D19;
+$menu-bg-color: #F4F3F0;
+$header-bg-color: #030102;
+$content-bg-color: #FAF9F6;
+$footer-bg-color: #030102;
+$menu-item-color: #A6A499;
+$post-item-color: #FAF9F6;
+$post-item-hover-color: #ED6242;
+$page-number-bg: #BE2B2A;
+$text-black: #222;
+$text-white: #fff;
+$text-grey: rgb(173, 172, 171);
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin: 0;
+  font-size: 16px;
   .sidebar {
     position: fixed;
-    width: 20vw;
+    width: 20%;
     height: 100vh;
     .info-container {
       height: 300px;
-      background: #C5C8D6;
+      background: $info-bg-color;
     }
     .menu-container {
       height: calc(100% - 300px);
-      background: #1D3547;
+      background: $menu-bg-color;
       padding: 15px 0;
       .menu-item {
         display: block;
@@ -21,21 +34,127 @@ body {
         font-size: 1.4rem;
         font-weight: 100;
         text-decoration: none;
-        color: #fff;
+        color: $text-black;
         transition: 0.3s;
         transform-origin: 0 50%;
         &:hover {
-          background: #58B0AD;
-          transform: scale(1.05, 1.1);
+          background: $menu-item-color;
+          transform: scale(1.07, 1.1);
+          color: $text-white;
         }
       }
     }
   }
   .main {
-    margin-left: 20vw;
+    margin-left: 20%;
+    background: $content-bg-color;
     .header {
       height: 300px;
-      background: #9195B2;
+      background: $header-bg-color;
+    }
+    .recent-posts {
+      .recent-post-item {
+        height: 150px;
+        background: $post-item-color;
+        transition: 0.3s;
+        transform-origin: 100% 50%;
+        &:hover {
+          background: $post-item-hover-color;
+          transform: scale(1.04, 1);
+          .link {
+            color: $text-white;
+            .time {
+              font-size: 0.8rem;
+              color: $text-white;
+            }
+          }
+        }
+        .link {
+          box-sizing: border-box;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          padding-left: 30px;
+          flex-direction: column;
+          justify-content: center;
+          text-decoration: none;
+          color: $text-black;
+          .title {
+            margin-bottom: 5px;
+          }
+          .time {
+            color: $text-grey;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    .pages-container {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .page-number {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        text-decoration: none;
+        color: $text-black;
+        border: 1px solid transparent;
+        transition: 0.3s;
+        &:hover {
+          cursor: pointer;
+          border: 1px solid $page-number-bg;
+        }
+        &.current,
+        &.current:hover {
+          background: $page-number-bg;
+          border: 1px solid $page-number-bg;
+          color: $text-white;
+          cursor: default;
+        }
+      }
+      .extend {
+        box-sizing: border-box;
+        width: 60px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        text-decoration: none;
+        color: $text-black;
+        border: 1px solid transparent;
+        transition: 0.3s;
+        &:hover {
+          cursor: pointer;
+          border: 1px solid $page-number-bg;
+        }
+      }
+      .space {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        text-decoration: none;
+        color: $text-black;
+        transition: 0.3s;
+      }
     }
   }
+  // .footer {
+  //   position: fixed;
+  //   bottom: 0;
+  //   right: 0;
+  //   width: 80%;
+  //   height: 200px;
+  //   background: $footer-bg-color;
+  // }
 }

@@ -32,17 +32,8 @@ html(lang=config.language)
             div!= body
           else
             block content
-      #bottom-outer
-        #bottom-inner
-          span Site construction by
-          span= ' ' + config.author + ' '
-          span using
-          a(href='http://hexo.io')
-            span hexo blog framework
-          span .
-          br
-          a(href=config.root) Home
-      if theme.scripts !== undefined && theme.scripts.length > 0
-        //- scripts list from config.yml
-        each url in theme.scripts
-          script(src=url)
+    //- #bottom-outer.footer
+    if theme.scripts !== undefined && theme.scripts.length > 0
+      //- scripts list from config.yml
+      each url in theme.scripts
+        script(src=url)
