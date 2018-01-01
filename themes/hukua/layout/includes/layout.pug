@@ -20,14 +20,36 @@ html(lang=config.language)
 
   body
     .sidebar
-      .info-container
+      .logo-container
+        <svg width="240" height="300" viewport="240 300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+          <g class="path-set-1">
+            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+          </g>
+          <g class="path-set-2">
+            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+          </g>
+          <g class="path-set-3">
+            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+          </g>
+        </svg>
+      - var menuitemCount = 0;
       #menu-outer.menu-container
         each url, label in theme.menu
-          a.menu-item(href=url)= label
+          - var bgClass = 'menu-item-bg' + ' ' + 'bg' + menuitemCount;
+          - menuitemCount++;
+          .menu-item
+            div(class=bgClass)
+            .mask
+            a.menu-item-link(href=url)= label
     .main
       .header
+        h1.title Sirius's Blog
+        h2.subtitle 练功发自真心
       #content-outer
-        #content-inner
+        #content-inner.content-inner
           if body
             div!= body
           else
