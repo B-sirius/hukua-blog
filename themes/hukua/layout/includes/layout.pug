@@ -11,6 +11,8 @@ doctype html
 html(lang=config.language)
   head
     meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    meta(name='description' content='sirius的博客')
     title= pageTitle
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       //- stylesheets list from config.yml
@@ -23,16 +25,12 @@ html(lang=config.language)
       .logo-container
         <svg width="240" height="300" viewport="240 300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
           <g class="path-set-1">
-            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
-            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" fill="none"/>
+            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" fill="none"/>
           </g>
           <g class="path-set-2">
-            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
-            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
-          </g>
-          <g class="path-set-3">
-            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
-            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+            <path class="logo-path" d="m66,80l-13,148l13,-148z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" fill="none"/>
+            <path class="logo-path" d="m129,155l62,64l-122,-1l14,-147l86,0l-70,98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" fill="none"/>
           </g>
         </svg>
       - var menuitemCount = 0;
@@ -44,8 +42,18 @@ html(lang=config.language)
             div(class=bgClass)
             .mask
             a.menu-item-link(href=url)= label
-    .main
-      .header
+    #js-mobile-topbar.mobile-topbar
+      a#js-menu-btn.menu-btn(href="javascript:")
+        <svg class="menu-icon" t="1514874387585" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1876" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><defs><style type="text/css"></style></defs><path d="M65.012178 128.544655 65.012178 230.875275 959.381795 230.875275 959.381795 128.544655 65.012178 128.544655Z" p-id="1877" fill="#ffffff"></path><path d="M64.729745 563.201126 959.269231 563.201126 959.269231 460.870506 64.729745 460.870506 64.729745 563.201126Z" p-id="1878" fill="#ffffff"></path><path d="M64.729745 895.525953 959.269231 895.525953 959.269231 793.195334 64.729745 793.195334 64.729745 895.525953Z" p-id="1879" fill="#ffffff"></path><path d="M64.729745 889.742227" p-id="1880" fill="#ffffff"></path></svg>
+    #js-mobile-menu-container.mobile-menu-container
+      #js-mobile-menu-wrapper.mobile-menu-wrapper
+        .mask
+        .bg
+        nav.menu
+          each url, label in theme.menu
+            a.menu-item-link(href=url)= label
+    #js-main.main
+      #js-header.header
         h1.title Sirius's Blog
         h2.subtitle 练功发自真心
       #content-outer
