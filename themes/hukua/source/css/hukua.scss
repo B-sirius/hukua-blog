@@ -13,7 +13,9 @@ $post-item-hover-color-2: rgb(243, 144, 31);
 $post-item-hover-color-3: rgb(29, 194, 172);
 $page-number-bg: #BE2B2A;
 $text-black: #222;
+$text-dark: rgb(87, 87, 87);
 $text-white: #fff;
+$text-purple: rgb(242, 17, 156);
 $text-grey: rgb(173, 172, 171);
 $stroke-color-1: rgb(17, 242, 212);
 $stroke-color-2: rgb(242, 17, 156);
@@ -24,8 +26,6 @@ $menu-item-bg2: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Umineko%20no%20N
 $menu-item-bg3: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Farewell%20My%20Concubine.jpg);
 // 移动端菜单背景图
 $mobile-menu-bg: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/cowboy%20bebop%20outline.png);
-// logo路径间隔长度
-$dash-space: 40;
 // 响应式变换点
 $pad-size: 1024px;
 $phone-size: 414px;
@@ -43,28 +43,39 @@ html {
         display: none;
       }
       .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 300px;
         background: $info-bg-color;
-        .logo-path {
-          stroke-dashoffset: 0;
-          stroke-dasharray: 0 300;
-        }
-        .path-set-1 {
-          transform: translate3d(-4px, -3px, 0);
-        }
-        .path-set-1 .logo-path {
-          stroke: $stroke-color-1;
-          stroke-width: 3px;
-          animation: stroke 1.5s ease-in-out forwards 1.2s;
-        }
-        .path-set-2 .logo-path {
-          stroke: $stroke-color-2;
-          stroke-width: 3px;
-          animation: stroke 1.5s ease-in-out forwards 1s;
-        }
-        @keyframes stroke {
-          100% {
-            stroke-dasharray: 500 300;
+        .logo {
+          transform: scale(1.2);
+          ellipse,
+          line,
+          path {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 300;
+            stroke-width: 3px;
+          }
+          .set-1 {
+            transform: translate3d(-3px, 0, 0);
+          }
+          .set-1 ellipse,
+          .set-1 line,
+          .set-1 path {
+            stroke: $stroke-color-1;
+            animation: stroke 1.5s ease-in-out forwards 1.2s;
+          }
+          .set-2 ellipse,
+          .set-2 line,
+          .set-2 path {
+            stroke: $stroke-color-2;
+            animation: stroke 1.5s ease-in-out forwards 1s;
+          }
+          @keyframes stroke {
+            100% {
+              stroke-dasharray: 500 300;
+            }
           }
         }
       }
@@ -198,16 +209,12 @@ html {
           height: 100vh;
           .bg {
             position: absolute;
-            width: 300px;
-            height: 254px;
+            width: 150px;
+            height: 127px;
             right: 0;
             bottom: 0;
             background-image: $mobile-menu-bg;
             background-size: cover;
-            @media screen and (max-width: $phone-size) {
-              width: 150px;
-              height: 127px;
-            }
           }
           .mask {
             position: absolute;
@@ -227,7 +234,7 @@ html {
               color: $text-white;
               font-size: 2rem;
               text-decoration: none;
-              margin: 25px 0;
+              margin: 10px 0;
             }
           }
         }
@@ -246,147 +253,221 @@ html {
         padding: 0 30px;
         height: 300px;
         background: $header-bg-color;
-        .title {
-          margin: 0;
-          font-size: 4rem;
-          font-weight: 100;
-          color: $text-white;
+        .row {
+          .title {
+            display: inline-block;
+            margin: 0;
+            font-size: 4rem;
+            font-weight: 100;
+            color: $text-white;
+          }
+          .music-btn {
+            display: inline-block;
+            font-size: 0;
+            text-decoration: none;
+            position: absolute;
+            transform: scale(0.35) translate3d(-51px, -64px, 0);
+            cursor: pointer;
+            @media screen and (max-width: $phone-size) {
+              display: none;
+            }
+            .music-icon {
+              &:hover {
+                animation: roll 1s;
+              }
+              &.active {
+                animation: play 1.5s infinite linear;
+              }
+            }
+            @keyframes roll {
+              80% {
+                transform: rotate(390deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+            @keyframes play {
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          }
         }
         .subtitle {
-          margin: 0;
+          margin: 10px 0 0 0;
           font-size: 1.3rem;
           font-weight: 100;
           color: $text-white;
         }
       }
-      .content-inner {
-        position: relative;
-        box-sizing: border-box;
-        min-height: calc(100vh - 300px);
-        padding-bottom: 100px; // home的主体
-        .recent-posts {
-          display: flex;
-          flex-wrap: wrap;
-          .recent-post-item {
-            height: 150px;
-            flex-basis: 50%;
-            background: $post-item-color;
-            transition: 0.3s;
-            transform-origin: 100% 50%;
-            @media screen and (max-width: $pad-size) {
-              flex-basis: 100%;
-            }
-            &:hover {
-              .link {
-                color: $text-white;
-                .time {
-                  font-size: 0.8rem;
-                  color: $text-white;
-                }
-              }
-            }
-            &:nth-child(3n+1):hover {
-              background: $post-item-hover-color-1;
-            }
-            &:nth-child(3n+2):hover {
-              background: $post-item-hover-color-2;
-            }
-            &:nth-child(3n+3):hover {
-              background: $post-item-hover-color-3;
-            }
+    }
+    .content-inner {
+      position: relative;
+      box-sizing: border-box;
+      min-height: calc(100vh - 300px);
+      padding-bottom: 100px;
+      .recent-posts { // home主体
+        display: flex;
+        flex-wrap: wrap;
+        .recent-post-item {
+          font-size: 1.1rem;
+          height: 150px;
+          flex-basis: 50%;
+          background: $post-item-color;
+          transition: 0.3s;
+          transform-origin: 100% 50%;
+          @media screen and (max-width: $pad-size) {
+            flex-basis: 100%;
+          }
+          &:hover {
             .link {
-              box-sizing: border-box;
-              display: flex;
-              width: 100%;
-              height: 100%;
-              padding: 0 30px;
-              flex-direction: column;
-              justify-content: center;
-              text-decoration: none;
-              color: $text-black;
-              .title {
-                margin-bottom: 5px;
-              }
+              color: $text-white;
               .time {
-                color: $text-grey;
-                font-size: 0.8rem;
+                color: $text-white;
               }
             }
           }
+          &:nth-child(3n+1):hover {
+            background: $post-item-hover-color-1;
+          }
+          &:nth-child(3n+2):hover {
+            background: $post-item-hover-color-2;
+          }
+          &:nth-child(3n+3):hover {
+            background: $post-item-hover-color-3;
+          }
+          .link {
+            box-sizing: border-box;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding: 0 30px;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            color: $text-black;
+            .title {
+              margin-bottom: 5px;
+            }
+            .time {
+              color: $text-grey;
+              font-size: 0.9rem;
+            }
+          }
         }
-        .pages-container {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 100px;
+      }
+      .pages-container { // 页脚
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .page-number {
+          box-sizing: border-box;
+          width: 40px;
+          height: 40px;
           display: flex;
           justify-content: center;
           align-items: center;
-          .page-number {
-            box-sizing: border-box;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 5px;
-            text-decoration: none;
-            color: $text-black;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            &:hover {
-              cursor: pointer;
-              border: 1px solid $page-number-bg;
-            }
-            &.current,
-            &.current:hover {
-              background: $page-number-bg;
-              border: 1px solid $page-number-bg;
-              color: $text-white;
-              cursor: default;
-            }
+          margin: 0 5px;
+          text-decoration: none;
+          color: $text-black;
+          border: 1px solid transparent;
+          transition: 0.3s;
+          &:hover {
+            cursor: pointer;
+            border: 1px solid $page-number-bg;
           }
-          .extend {
-            box-sizing: border-box;
-            width: 60px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 5px;
-            text-decoration: none;
-            color: $text-black;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            &:hover {
-              cursor: pointer;
-              border: 1px solid $page-number-bg;
-            }
-          }
-          .space {
-            box-sizing: border-box;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 5px;
-            text-decoration: none;
-            color: $text-black;
-            transition: 0.3s;
-          }
-        } // post的主体
-        .markdown-body {
-          box-sizing: border-box;
-          min-width: 200px;
-          max-width: 980px;
-          margin: 0 auto;
-          padding: 45px;
-          @media (max-width: 767px) {
-            padding: 15px;
+          &.current,
+          &.current:hover {
+            background: $page-number-bg;
+            border: 1px solid $page-number-bg;
+            color: $text-white;
+            cursor: default;
           }
         }
+        .extend {
+          box-sizing: border-box;
+          width: 60px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 5px;
+          text-decoration: none;
+          color: $text-black;
+          border: 1px solid transparent;
+          transition: 0.3s;
+          &:hover {
+            cursor: pointer;
+            border: 1px solid $page-number-bg;
+          }
+        }
+        .space {
+          box-sizing: border-box;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 5px;
+          text-decoration: none;
+          color: $text-black;
+          transition: 0.3s;
+        }
+      }
+      .toc-wrapper { // 文章目录
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc((100% - 240px) * 0.20);
+        right: 0;
+        top: 50px;
+        z-index: 1;
+        @media screen and (max-width: $pad-size) {
+          display: none;
+        }
+        ol {
+          list-style: none;
+          padding-left: 15px;
+          &.toc {
+            margin: 0;
+            padding: 0;
+          }
+          .toc-link {
+            display: inline-block;
+            padding: 5px 0;
+            line-height: 1.2;
+            color: $text-dark;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover {
+              color: $text-purple;
+            }
+          }
+        }
+      }
+      .markdown-body { // post主体
+        box-sizing: border-box;
+        width: 80%;
+        min-width: 200px;
+        // max-width: 980px;
+        padding: 45px 15px 45px 45px;
+        @media screen and (max-width: $pad-size) {
+          margin: 0 auto;
+        }
+        @media (max-width: 767px) {
+          padding: 15px;
+        }
+        // h1, h2, h3, h4, h5, h6 {
+        //   transform: translate3d(0, 30px, 0);
+        //   margin-top: -30px;
+        // }
       }
     }
   }

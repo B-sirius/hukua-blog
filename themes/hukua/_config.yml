@@ -16,8 +16,9 @@ favicon: /favicon.ico
 stylesheets:
 - /css/hukua.css
 - /css/markdown-css.css
+- /css/highlight.css
 
 # scripts loaded in the end of the body
 scripts:
 - https://cdn.bootcss.com/gsap/latest/TweenMax.min.js
-- /js/hukua.es6
+- /js/hukua.js

@@ -1,13 +1,15 @@
+'use strict';
+
 let get = selector => document.querySelector(selector);
 
 // 移动端菜单切换
 (function () {
-    let mainContent = get('#js-main');
-    let header = get('#js-header');
-    let menuTopbar = get('#js-mobile-topbar');
-    let menuBtn = get('#js-menu-btn');
-    let mobileMenuContainer = get('#js-mobile-menu-container');
-    let mobileMenuWrapper = get('#js-mobile-menu-wrapper');
+    const mainContent = get('#js-main');
+    const header = get('#js-header');
+    const menuTopbar = get('#js-mobile-topbar');
+    const menuBtn = get('#js-menu-btn');
+    const mobileMenuContainer = get('#js-mobile-menu-container');
+    const mobileMenuWrapper = get('#js-mobile-menu-wrapper');
 
     let disableScroll = function(e) {
         e.preventDefault();
@@ -59,4 +61,54 @@ let get = selector => document.querySelector(selector);
 
     menuBtn.addEventListener('click', enableMenu);
     mobileMenuWrapper.addEventListener('click', disableMenu);
+})();
+
+// bgm播放
+(function() {
+    const audio = get('#js-audio');
+    const musicBtn = get('#js-music-btn');
+    const musicIcon = get('#js-music-icon')
+    // bgm列表
+    let bgmList = [
+        'http://ws.stream.qqmusic.qq.com/200351087.m4a?fromtag=46',
+        'http://ws.stream.qqmusic.qq.com/102879425.m4a?fromtag=46',
+        'http://ws.stream.qqmusic.qq.com/5008974.m4a?fromtag=46',
+        'http://ws.stream.qqmusic.qq.com/101100242.m4a?fromtag=46',
+        'http://ws.stream.qqmusic.qq.com/102879431.m4a?fromtag=46',
+        'http://ws.stream.qqmusic.qq.com/101100247.m4a?fromtag=46'
+    ];
+    // 状态
+    let pause = true;
+    let currIndex = Math.floor(Math.random() * bgmList.length);
+    let playId = null;
+
+    musicBtn.addEventListener('click', function() {
+        if (!audio.src) {
+            audio.src = bgmList[currIndex];
+        }
+        if (pause === true) {
+            // 播放
+            pause = false;
+            audio.play();
+            musicIcon.classList.add('active');
+
+            // 监听播放进度
+            playId = setInterval(function() {
+                if (audio.currentTime >= audio.duration) {
+                    currIndex = currIndex+1 < bgmList.length ? currIndex+1 : 0;
+                    audio.src = bgmList[currIndex];
+                    audio.play();
+                }
+            }, 1000);
+        } else {
+            // 暂停
+            pause = true;
+            audio.pause();
+            musicIcon.classList.remove('active');
+            
+            // 移除监听
+            clearInterval(playId);
+            playId = null;
+        }
+    });
 })();

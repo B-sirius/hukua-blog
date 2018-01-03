@@ -5,8 +5,6 @@ tags: [ blablabla]
 categories: 扯淡
 ---
 
-# 当一只菜鸡参加Hackathon
-
 这周末参加了学校的hackathon，虽然在时长上不到24h，但没有意料到的是，此次体验后，俺会对产品开发和技术协作有了一些全新认识。
 
 ## 产品开发

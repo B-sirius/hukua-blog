@@ -5,9 +5,6 @@ tags: [JavaScript]
 categories: 前端
 ---
 
-
-# 循环，还有这种操作——es6补充
-
 缘，妙不可言——开始系统梳理es6后，发现关于循环的知识点又有了不少补充，正好填一下上次的坑嘛【抖】，本文有大量部分直接摘于[es6标准入门](http://es6.ruanyifeng.com/)
 
 ps: [上集回顾](http://b-sirius.me/2017/08/15/%E5%BE%AA%E7%8E%AF%EF%BC%8C%E8%BF%98%E6%9C%89%E8%BF%99%E7%A7%8D%E6%93%8D%E4%BD%9C/)

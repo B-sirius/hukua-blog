@@ -1,6 +1,10 @@
 extends includes/layout.pug
 
 block content
+  //- 侧边栏
+  if(is_post())
+    .toc-wrapper!= toc(page.content)
+  //- 文章主体
   article#post.markdown-body
     h1= page.title
     != page.content

@@ -2511,7 +2511,7 @@ hexo-renderer-sass@^0.3.2:
   dependencies:
     node-sass "^4.5.3"
 
-hexo-renderer-stylus@^0.3.1:
+hexo-renderer-stylus@^0.3.3:
   version "0.3.3"
   resolved "http://registry.npm.taobao.org/hexo-renderer-stylus/download/hexo-renderer-stylus-0.3.3.tgz#c54ea27e1fd8e3c8a9a7a84cfba8ad354122ca7f"
   dependencies:
