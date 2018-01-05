@@ -3,11 +3,14 @@ extends includes/layout.pug
 block content
   //- 侧边栏
   if(is_post())
-    #js-toc-wrapper.toc-wrapper!= toc(page.content)
-  //- 文章主体
-  article#post.markdown-body
-    h1= page.title
-    != page.content
-  div!= paginator()
-  
+    #js-toc-wrapper.toc-wrapper.absolute!= toc(page.content)
+  .post-content
+    //- 文章主体
+    article#post.markdown-body
+      h1= page.title
+      != page.content
+    div!= paginator()
+    .comment-wrapper
+      //- .comment-title 哦，怼我吧
+      #comment
 

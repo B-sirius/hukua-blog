@@ -1,5 +1,5 @@
 // 颜色
-$info-bg-color: #120D19;
+$logo-bg-color: #120D19;
 $menu-bg-color: #F4F3F0;
 $header-bg-color: #030102;
 $content-bg-color: #FAF9F6;
@@ -47,7 +47,7 @@ html {
         justify-content: center;
         align-items: center;
         height: 300px;
-        background: $info-bg-color;
+        background: $logo-bg-color;
         .logo {
           transform: scale(1.2);
           ellipse,
@@ -424,14 +424,19 @@ html {
       }
       .toc-wrapper {
         // 文章目录
-        position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
         width: calc((100% - 240px) * 0.20);
-        right: 0;
         top: 50px;
+        right: 0;
         z-index: 1;
+        &.fixed {
+          position: fixed;
+        }
+        &.absolute {
+          position: absolute;
+        }
         @media screen and (max-width: $pad-size) {
           display: none;
         }
@@ -466,12 +471,21 @@ html {
           }
         }
       }
-      .markdown-body {
+      .post-content {
         // post主体
         box-sizing: border-box;
         width: 80%;
         min-width: 200px; // max-width: 980px;
         padding: 45px 15px 45px 45px;
+        .comment-wrapper {
+          margin-top: 40px;
+          .comment-title {
+            background: $logo-bg-color;
+            line-height: 36px;
+            color: $text-white;
+            padding: 0 5px;
+          }
+        }
         @media screen and (max-width: $pad-size) {
           margin: 0 auto;
           width: 100%;

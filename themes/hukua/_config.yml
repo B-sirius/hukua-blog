@@ -15,8 +15,11 @@ favicon: /favicon.ico
 # stylesheets loaded in the <head>
 stylesheets:
 - /css/hukua.css
+
+postStylesheets:
 - /css/markdown-css.css
 - /css/highlight.css
+- https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css
 
 # scripts loaded in the end of the body
 scripts:
@@ -25,3 +28,5 @@ scripts:
 
 postScripts:
 - /js/post.js
+- https://cdn1.lncld.net/static/js/3.0.4/av-min.js
+- https://unpkg.com/valine/dist/Valine.min.js

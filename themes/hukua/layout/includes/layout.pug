@@ -11,13 +11,17 @@ doctype html
 html(lang=config.language)
   head
     meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
     meta(name='description' content='sirius的博客')
     meta(name='theme-color' content='#030102')
     title= pageTitle
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       //- stylesheets list from config.yml
       each url in theme.stylesheets
+        link(href=url, rel='stylesheet')
+    if (is_post())
+      if theme.postStylesheets !== undefined && theme.postStylesheets.length > 0
+      each url in theme.postStylesheets
         link(href=url, rel='stylesheet')
     link(href=config.root + 'img/favicon.png', rel="icon")
 
@@ -67,3 +71,14 @@ html(lang=config.language)
       if theme.postScripts !== undefined && theme.postScripts.length > 0
       each url in theme.postScripts
         script(src=url)
+      script.
+        new Valine({
+          el: '#comment' ,
+          notify: true, 
+          verify: true, 
+          appId: 'xAgNfqDbPu4HfcuSWlDQEh4u-gzGzoHsz',
+          appKey: '7CVjLXNHODMvmGIKOEQuS4mW',
+          placeholder: '哦，怼我吧',
+          path: window.location.pathname, 
+          avatar:'identicon' 
+        })
