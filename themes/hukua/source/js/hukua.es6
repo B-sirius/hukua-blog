@@ -2,6 +2,20 @@
 
 let get = selector => document.querySelector(selector);
 
+// 节流函数
+let throttleFn = function(fn, interval, _this, args) {
+    let timeId = null;
+    return function () {
+        if (timeId !== null)
+            return;
+
+        timeId = setTimeout(function () {
+            fn.apply(this, args);
+            timeId = null;
+        }, interval);
+    }
+};
+
 // 移动端菜单切换
 (function () {
     const mainContent = get('#js-main');
@@ -11,15 +25,16 @@ let get = selector => document.querySelector(selector);
     const mobileMenuContainer = get('#js-mobile-menu-container');
     const mobileMenuWrapper = get('#js-mobile-menu-wrapper');
 
-    let disableScroll = function(e) {
+    let disableScroll = function (e) {
         e.preventDefault();
-    }
+    };
 
     let enableMenu = function () {
+        // fix移动端chrome地址栏栏造成的高度不准确
+        mobileMenuWrapper.style.height = window.innerHeight + 'px';
+
         // 禁止滚动
         mobileMenuWrapper.addEventListener('touchmove', disableScroll);
-
-        console.log(mainContent.onscroll);
 
         // 展开动画第一阶段开始时的高度
         let fromHeight = header.clientHeight - window.scrollY > menuTopbar.clientHeight ?
@@ -29,15 +44,16 @@ let get = selector => document.querySelector(selector);
         // 展开动画
         mobileMenuContainer.style.height = fromHeight + 'px';
         let activeTl = new TimelineLite();
-        TweenLite.defaultEase = Power1.easeOut;
         activeTl.to(mobileMenuContainer, 0.4, {
             width: '100%',
+            ease: Power1.easeOut
         }).to(mobileMenuContainer, 0.4, {
-            height: '100%'
+            height: '100%',
+            ease: Power1.easeOut
         });
-    }
+    };
 
-    let disableMenu = function(e) {
+    let disableMenu = function (e) {
         // 移除滚动锁定
         mobileMenuWrapper.removeEventListener('touchmove', disableScroll);
 
@@ -57,14 +73,14 @@ let get = selector => document.querySelector(selector);
         }).to(mobileMenuContainer, 0.4, {
             width: 0
         });
-    }
+    };
 
     menuBtn.addEventListener('click', enableMenu);
     mobileMenuWrapper.addEventListener('click', disableMenu);
 })();
 
 // bgm播放
-(function() {
+(function () {
     const audio = get('#js-audio');
     const musicBtn = get('#js-music-btn');
     const musicIcon = get('#js-music-icon')
@@ -82,7 +98,7 @@ let get = selector => document.querySelector(selector);
     let currIndex = Math.floor(Math.random() * bgmList.length);
     let playId = null;
 
-    musicBtn.addEventListener('click', function() {
+    musicBtn.addEventListener('click', function () {
         if (!audio.src) {
             audio.src = bgmList[currIndex];
         }
@@ -93,9 +109,9 @@ let get = selector => document.querySelector(selector);
             musicIcon.classList.add('active');
 
             // 监听播放进度
-            playId = setInterval(function() {
+            playId = setInterval(function () {
                 if (audio.currentTime >= audio.duration) {
-                    currIndex = currIndex+1 < bgmList.length ? currIndex+1 : 0;
+                    currIndex = currIndex + 1 < bgmList.length ? currIndex + 1 : 0;
                     audio.src = bgmList[currIndex];
                     audio.play();
                 }
@@ -105,7 +121,7 @@ let get = selector => document.querySelector(selector);
             pause = true;
             audio.pause();
             musicIcon.classList.remove('active');
-            
+
             // 移除监听
             clearInterval(playId);
             playId = null;

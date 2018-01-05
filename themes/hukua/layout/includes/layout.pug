@@ -58,8 +58,12 @@ html(lang=config.language)
             div!= body
           else
             block content
-    //- #bottom-outer.footer
+    //- scripts list from config.yml
     if theme.scripts !== undefined && theme.scripts.length > 0
-      //- scripts list from config.yml
       each url in theme.scripts
+        script(src=url)
+    //- 如果是post页
+    if (is_post())
+      if theme.postScripts !== undefined && theme.postScripts.length > 0
+      each url in theme.postScripts
         script(src=url)

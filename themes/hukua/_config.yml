@@ -22,3 +22,6 @@ stylesheets:
 scripts:
 - https://cdn.bootcss.com/gsap/latest/TweenMax.min.js
 - /js/hukua.js
+
+postScripts:
+- /js/post.js

@@ -206,7 +206,7 @@ html {
           right: 0;
           top: 0;
           width: 100vw;
-          height: 100vh;
+          height: 0;
           .bg {
             position: absolute;
             width: 150px;
@@ -307,7 +307,8 @@ html {
       box-sizing: border-box;
       min-height: calc(100vh - 300px);
       padding-bottom: 100px;
-      .recent-posts { // home主体
+      .recent-posts {
+        // home主体
         display: flex;
         flex-wrap: wrap;
         .recent-post-item {
@@ -357,7 +358,8 @@ html {
           }
         }
       }
-      .pages-container { // 页脚
+      .pages-container {
+        // 页脚
         position: absolute;
         bottom: 0;
         left: 0;
@@ -420,8 +422,9 @@ html {
           transition: 0.3s;
         }
       }
-      .toc-wrapper { // 文章目录
-        position: fixed;
+      .toc-wrapper {
+        // 文章目录
+        position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -439,6 +442,14 @@ html {
             margin: 0;
             padding: 0;
           }
+          &.toc-child {
+            overflow: hidden;
+            transition: 1s;
+            max-height: 0;
+          }
+          &.toc-child.active {
+            max-height: 1000px;
+          }
           .toc-link {
             display: inline-block;
             padding: 5px 0;
@@ -449,22 +460,25 @@ html {
             &:hover {
               color: $text-purple;
             }
+            &.active {
+              color: $text-purple;
+            }
           }
         }
       }
-      .markdown-body { // post主体
+      .markdown-body {
+        // post主体
         box-sizing: border-box;
         width: 80%;
-        min-width: 200px;
-        // max-width: 980px;
+        min-width: 200px; // max-width: 980px;
         padding: 45px 15px 45px 45px;
         @media screen and (max-width: $pad-size) {
           margin: 0 auto;
+          width: 100%;
         }
         @media (max-width: 767px) {
           padding: 15px;
-        }
-        // h1, h2, h3, h4, h5, h6 {
+        } // h1, h2, h3, h4, h5, h6 {
         //   transform: translate3d(0, 30px, 0);
         //   margin-top: -30px;
         // }
