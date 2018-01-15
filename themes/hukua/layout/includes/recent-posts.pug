@@ -7,4 +7,8 @@ if page.posts.length > 0
           span.title= post.title
           if post.date
             time.time(datetime=post.date.toJSON())= date(post.date, date_format)
+        if (post.tags && post.tags.data.length > 0)
+          .tag-list
+              each tag in post.tags.data
+                a.tag(href=url_for(tag.path))= tag.name
 

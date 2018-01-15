@@ -4,26 +4,23 @@ $menu-bg-color: #F4F3F0;
 $header-bg-color: #030102;
 $content-bg-color: #FAF9F6;
 $footer-bg-color: #030102;
-$menu-mask-color-1: rgba(219, 21, 137, 0.4);
-$menu-mask-color-2: rgba(238, 105, 16, 0.4);
-$menu-mask-color-3: rgba(21, 184, 162, 0.4);
+$menu-mask-color: rgba(219, 21, 137, 0.4);
 $post-item-color: #FAF9F6;
-$post-item-hover-color-1: rgb(180, 19, 118);
-$post-item-hover-color-2: rgb(243, 144, 31);
-$post-item-hover-color-3: rgb(29, 194, 172);
-$page-number-bg: #BE2B2A;
+$post-item-hover-color: rgb(180, 19, 118);
+$taglist-bg-color: rgb(151, 14, 99);
+$page-number-bg: rgb(180, 19, 100);
 $text-black: #222;
 $text-dark: rgb(87, 87, 87);
 $text-white: #fff;
-$text-purple: rgb(242, 17, 156);
+$text-purple: rgb(214, 28, 143);
 $text-grey: rgb(173, 172, 171);
 $stroke-color-1: rgb(17, 242, 212);
 $stroke-color-2: rgb(242, 17, 156);
 // 按钮背景图
 $menu-item-bg0: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/cowboy%20bebop.jpg);
-$menu-item-bg1: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/gone%20with%20the%20wind.jpg);
+$menu-item-bg1: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Farewell%20My%20Concubine.jpg);
 $menu-item-bg2: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Umineko%20no%20Naku%20Koro%20ni.jpg);
-$menu-item-bg3: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Farewell%20My%20Concubine.jpg);
+$menu-item-bg3: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/gone%20with%20the%20wind.jpg);
 // 移动端菜单背景图
 $mobile-menu-bg: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/cowboy%20bebop%20outline.png);
 // 响应式变换点
@@ -55,7 +52,7 @@ html {
           path {
             stroke-dashoffset: 0;
             stroke-dasharray: 0 300;
-            stroke-width: 3px;
+            stroke-width: 0;
           }
           .set-1 {
             transform: translate3d(-3px, 0, 0);
@@ -73,7 +70,11 @@ html {
             animation: stroke 1.5s ease-in-out forwards 1s;
           }
           @keyframes stroke {
+            0% {
+              stroke-width: 3px;
+            }
             100% {
+              stroke-width: 3px;
               stroke-dasharray: 500 300;
             }
           }
@@ -90,21 +91,6 @@ html {
           margin-bottom: 15px;
           transition: 0.3s;
           transform-origin: 0 50%;
-          &:nth-child(3n+1) {
-            .mask {
-              background: $menu-mask-color-1;
-            }
-          }
-          &:nth-child(3n+2) {
-            .mask {
-              background: $menu-mask-color-2;
-            }
-          }
-          &:nth-child(3n+3) {
-            .mask {
-              background: $menu-mask-color-3;
-            }
-          }
           .menu-item-link {
             position: absolute;
             left: 0;
@@ -127,6 +113,8 @@ html {
             width: 100%;
             height: 100%;
             opacity: 0;
+            background: $menu-mask-color;            
+            transform: translate3d(-10px, 6px, 0);
             transition: 0.3s;
           }
           .menu-item-bg {
@@ -137,6 +125,7 @@ html {
             height: 100%;
             background-size: cover;
             opacity: 0;
+            transform: translate3d(-10px, 6px, 0);
             transition: 0.3s;
           }
           .menu-item-bg.bg0 {
@@ -159,6 +148,7 @@ html {
             .mask,
             .menu-item-bg {
               opacity: 1;
+              transform: translate3d(0, 0, 0);
             }
           }
         }
@@ -312,9 +302,12 @@ html {
         display: flex;
         flex-wrap: wrap;
         .recent-post-item {
+          display: flex;
+          box-sizing: border-box;
           font-size: 1.1rem;
           height: 150px;
           flex-basis: 50%;
+          flex-direction: column;
           background: $post-item-color;
           transition: 0.3s;
           transform-origin: 100% 50%;
@@ -322,28 +315,27 @@ html {
             flex-basis: 100%;
           }
           &:hover {
+            background: $post-item-hover-color;
             .link {
               color: $text-white;
               .time {
                 color: $text-white;
               }
             }
-          }
-          &:nth-child(3n+1):hover {
-            background: $post-item-hover-color-1;
-          }
-          &:nth-child(3n+2):hover {
-            background: $post-item-hover-color-2;
-          }
-          &:nth-child(3n+3):hover {
-            background: $post-item-hover-color-3;
+            .tag-list {
+              background: $taglist-bg-color;
+              .tag {
+                background: $text-white;
+                color: $post-item-hover-color;
+              }
+            }
           }
           .link {
             box-sizing: border-box;
             display: flex;
             width: 100%;
-            height: 100%;
             padding: 0 30px;
+            flex-grow: 1;
             flex-direction: column;
             justify-content: center;
             text-decoration: none;
@@ -354,6 +346,25 @@ html {
             .time {
               color: $text-grey;
               font-size: 0.9rem;
+            }
+          }
+          .tag-list {
+            padding: 0 30px;
+            display: flex;
+            height: 40px;
+            align-items: center;
+            transition: 0.3s;
+            .tag {
+              display: inline-block;
+              line-height: 1.4rem;
+              padding: 0 10px;
+              margin-right: 10px;
+              text-decoration: none;
+              color: $text-purple;
+              font-size: 0.9rem;
+              border-radius: 0.7rem;
+              transform: translate3d(-10px, 0, 0);
+              transition: 0.3s;
             }
           }
         }

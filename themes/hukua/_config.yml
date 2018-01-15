@@ -5,9 +5,9 @@ language: en
 # main menu navigation
 menu:
   Home: /
-  About: /about
-  Contact: /contact
   Archives: /archives
+  Github: https://github.com/B-sirius
+  About: /about
 
 # Miscelaneous
 favicon: /favicon.ico
@@ -19,7 +19,6 @@ stylesheets:
 postStylesheets:
 - /css/markdown-css.css
 - /css/highlight.css
-- https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css
 
 # scripts loaded in the end of the body
 scripts:
