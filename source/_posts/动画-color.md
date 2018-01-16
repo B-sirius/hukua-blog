@@ -1,7 +1,7 @@
 ---
 title: 当我们讨论动画时，我们在讨论什么———color篇
 date: 2017-04-30 14:19:29
-tags: [JavaScript]
+tags: [动画, color]
 categories: 前端
 ---
 

@@ -10,5 +10,5 @@ if page.posts.length > 0
         if (post.tags && post.tags.data.length > 0)
           .tag-list
               each tag in post.tags.data
-                a.tag(href=url_for(tag.path))= tag.name
+                a.tag(href=url_for(tag.path))= "#"+tag.name
 

@@ -1,7 +1,7 @@
 ---
 title: 数学没学好，动画没头脑——transform篇
 date: 2017-12-19 20:08:05
-tags: [JavaScript]
+tags: [transform,三角函数,rotate,matrix矩阵]
 categories: 前端
 ---
 

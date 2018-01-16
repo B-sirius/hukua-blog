@@ -1,7 +1,7 @@
 ---
 title: 循环，还有这种操作——es6补充！？
 date: 2017-10-22 10:27:42
-tags: [JavaScript]
+tags: [es6,循环]
 categories: 前端
 ---
 

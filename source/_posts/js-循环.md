@@ -1,7 +1,7 @@
 ---
 title: 循环，还有这种操作！？
 date: 2017-08-15 19:58:38
-tags: [JavaScript]
+tags: [循环]
 categories: 前端
 ---
 

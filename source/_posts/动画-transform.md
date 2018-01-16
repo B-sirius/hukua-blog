@@ -1,7 +1,7 @@
 ---
 title: 当我们讨论动画时，我们在讨论什么——transform篇
 date: 2017-04-19 18:37:46
-tags: [JavaScript]
+tags: [transform, 动画]
 categories: 前端
 ---
 
