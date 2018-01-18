@@ -6,8 +6,7 @@ $content-bg-color: #FAF9F6;
 $footer-bg-color: #030102;
 $menu-mask-color: rgba(219, 21, 137, 0.4);
 $post-item-color: #FAF9F6;
-$post-item-hover-color: rgb(235, 234, 227);
-$taglist-bg-color: rgb(151, 14, 99);
+$post-item-border-color: rgb(219, 218, 215);
 $page-number-bg: rgb(180, 19, 100);
 $text-black: #222;
 $text-dark: rgb(95, 94, 94);
@@ -312,6 +311,7 @@ html {
           transform-origin: 100% 50%;
           @media screen and (max-width: $pad-size) {
             flex-basis: 100%;
+            border-bottom: 1px solid $post-item-border-color;
           }
           .link {
             box-sizing: border-box;
@@ -428,7 +428,7 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: calc((100% - 240px) * 0.20);
+        width: calc((100vw - 240px) * 0.20);
         top: 50px;
         right: 0;
         z-index: 1;
