@@ -28,7 +28,7 @@ $phone-size: 414px;
 html {
   font-size: 16px;
   body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Roboto Condensed', 'Gill Sans', 'Gill Sans MT', 'PingFang SC', 'Microsoft Yahei', sans-serif;
     margin: 0;
     .sidebar {
       position: fixed;
@@ -98,7 +98,7 @@ html {
             box-sizing: border-box;
             line-height: 60px;
             font-size: 1.4rem;
-            font-weight: 100;
+            font-weight: 300;
             text-decoration: none;
             color: $text-black;
             padding: 0 30px;
@@ -244,11 +244,26 @@ html {
         background: $header-bg-color;
         .row {
           .title {
+            position: relative;
             display: inline-block;
             margin: 0;
             font-size: 4rem;
-            font-weight: 100;
-            color: $text-white;
+            font-weight: 700;
+            .blod {
+              position: relative;
+              display: inline-block;
+              padding: 5px 15px;
+              background: rgb(242, 17, 156);
+              color: $text-white;
+              transform: rotate(10deg);
+            }
+            .light {
+              display: inline-block;
+              padding: 5px 15px;
+              background: $text-white;
+              color: rgb(242, 17, 156);
+              transform: rotate(-5deg);
+            }
           }
           .music-btn {
             display: inline-block;
@@ -477,7 +492,7 @@ html {
         box-sizing: border-box;
         width: 80%;
         min-width: 200px; // max-width: 980px;
-        padding: 45px 15px 45px 45px;
+        padding: 30px 15px 45px 45px;
         .comment-wrapper {
           margin-top: 40px;
           .comment-title {
