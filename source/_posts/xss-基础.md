@@ -3,6 +3,7 @@ title: 《试图了解XSS注入，却发现了奇妙的基础问题！》
 date: 2017-09-26 16:38:38
 tags: [JavaScript]
 categories: 前端
+description: web安全，xss注入，blablabla......相关的博文看了不少，感觉相当单纯，不就是script嘛！转义嘛！结果自己尝试时又是喜闻乐见地发现，注入还没看多少，基础问题暴露一堆...
 ---
 
 啧，现在的轻小说起名真是浮夸【瞄】

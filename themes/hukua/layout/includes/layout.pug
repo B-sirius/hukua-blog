@@ -24,7 +24,7 @@ html(lang=config.language)
       each url in theme.postStylesheets
         link(href=url, rel='stylesheet')
     link(href=config.root + 'img/favicon.png', rel="icon")
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.cnpmjs.org/css?family=Lato:100,300,400|Martel:900" rel="stylesheet">
 
   body
     .sidebar
@@ -54,11 +54,11 @@ html(lang=config.language)
         audio#js-audio
         .row
           h1.title
-            span.blod Sirius's
-            span.light= " Blog"
+            span.bold Sirius’s
+            span.light= " blog"
           a#js-music-btn.music-btn(href="javascript:")
             include ../svgs/music
-        h2.subtitle 练功发自真心
+        h2.subtitle 我练功发自真心
       #content-outer
         #content-inner.content-inner
           if body

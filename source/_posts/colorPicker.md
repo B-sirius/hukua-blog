@@ -3,6 +3,7 @@ title: 俺的colorPicker制作思路
 date: 2017-04-09 15:17:52
 tags: [IFE2017, JavaScript]
 categories: 前端
+description: 说实话，一开始看到这个任务内心是相当懵比的——主要就是有两个点一下子没有头绪，但说实话，只要get到这两点的思路，这个任务也就完成了一半了。接下来俺就具体展开一下...
 ---
 
 [原任务地址](http://ife.baidu.com/course/detail/id/16)

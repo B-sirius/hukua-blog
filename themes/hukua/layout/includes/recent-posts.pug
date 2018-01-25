@@ -3,12 +3,15 @@ if page.posts.length > 0
   #recent-posts.recent-posts
     each post in page.posts.sort('date', -1).limit(10).toArray()
       .recent-post-item
-        a.link(href=config.root + post.path)
+        div.info
           span.title= post.title
           if post.date
             time.time(datetime=post.date.toJSON())= date(post.date, date_format)
-        if (post.tags && post.tags.data.length > 0)
-          .tag-list
-              each tag in post.tags.data
-                a.tag(href=url_for(tag.path))= "#"+tag.name
+          if (post.tags && post.tags.data.length > 0)
+            .tag-list
+                each tag in post.tags.data
+                  a.tag(href=url_for(tag.path))= "#"+tag.name
+        if (post.description) 
+          .description= post.description
+        a.link-btn(href=config.root + post.path) READ MORE
 

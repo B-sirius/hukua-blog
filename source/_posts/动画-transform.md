@@ -3,6 +3,7 @@ title: 当我们讨论动画时，我们在讨论什么——transform篇
 date: 2017-04-19 18:37:46
 tags: [transform, 动画]
 categories: 前端
+description: 基本完成了IFE的动画库任务,内心是崩溃的。JS补间动画的原理的确很简单，但在实现过程中，才意识到以前用的成熟的动画库，做了多少的工作...
 ---
 
 基本完成了IFE的[动画库任务(一)](http://ife.baidu.com/course/detail/id/52),内心是崩溃的。JS补间动画的原理的确很简单，但在实现过程中，才意识到以前用的成熟的动画库，做了多少的工作。
