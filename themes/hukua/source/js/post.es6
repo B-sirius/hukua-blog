@@ -43,7 +43,12 @@
     // 更新正在阅读的目录标题的方法
     let currTitle = null;
     let updateCurrTitle = function () {
-        for (let i = 0, len = titleList.length - 1; i < len; i++) {
+        for (let i = 0, len = titleList.length; i < len; i++) {
+            if (i === len - 1) {
+                currTitle = titleList[len - 1];
+                return;
+            }
+
             let itemRect = titleList[i].getBoundingClientRect(),
                 nextItemRect = titleList[i + 1].getBoundingClientRect();
             if (itemRect.top - 15 > 0) {
@@ -55,10 +60,6 @@
             else if (itemRect.top - 15 < 0) {
                 if (nextItemRect.top - 15 > 0) {
                     currTitle = titleList[i];
-                    return;
-                }
-                else if (i === len - 1) {
-                    currTitle = titleList[len];
                     return;
                 }
             }

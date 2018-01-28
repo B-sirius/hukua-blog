@@ -1,20 +1,23 @@
 // 颜色
 $logo-bg-color: #120D19;
-$menu-bg-color: #F4F3F0;
+$menu-bg-color: #F1F4F6;
 $header-bg-color: #030102;
-$content-bg-color: #FAF9F6;
+$content-bg-color: #fff;
 $footer-bg-color: #030102;
-$menu-mask-color: rgba(219, 21, 137, 0.4);
-$post-item-color: #FAF9F6;
-$post-item-border-color: rgb(219, 218, 215);
-$page-number-bg: rgb(180, 19, 100);
+$menu-mask-color: rgba(214, 28, 143, 0.5);
+$post-item-color: #fff;
+$page-number-bg: rgb(242, 17, 156);
+$mobile-mask-color: rgb(201, 12, 128);
+
 $text-black: #222;
 $text-dark: rgb(95, 94, 94);
 $text-white: #fff;
 $text-purple: rgb(214, 28, 143);
 $text-grey: rgb(173, 172, 171);
-$stroke-color-1: rgb(17, 242, 212);
-$stroke-color-2: rgb(242, 17, 156);
+
+$stroke-green: rgb(17, 242, 212);
+$stroke-purple: rgb(242, 17, 156);
+$stroke-grey: rgb(173, 172, 171);
 // 按钮背景图
 $menu-item-bg0: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/cowboy%20bebop.jpg);
 $menu-item-bg1: url(http://7xrkxs.com1.z0.glb.clouddn.com/hukua/Farewell%20My%20Concubine.jpg);
@@ -59,13 +62,13 @@ html {
           .set-1 ellipse,
           .set-1 line,
           .set-1 path {
-            stroke: $stroke-color-1;
+            stroke: $stroke-green;
             animation: stroke 1.5s ease-in-out forwards 1.2s;
           }
           .set-2 ellipse,
           .set-2 line,
           .set-2 path {
-            stroke: $stroke-color-2;
+            stroke: $stroke-purple;
             animation: stroke 1.5s ease-in-out forwards 1s;
           }
           @keyframes stroke {
@@ -211,7 +214,7 @@ html {
             right: 0;
             top: 0;
             bottom: 0;
-            background: rgb(180, 19, 118);
+            background: $mobile-mask-color;
           }
           .menu {
             position: relative;
@@ -257,6 +260,25 @@ html {
             .light {
               font-weight: 100;
             }
+            @media screen and (max-width: $phone-size) {
+              .bold {
+                background-image: linear-gradient(180deg,transparent 55%,$stroke-purple 55%, $stroke-purple 75%, transparent 0);
+                background-repeat: no-repeat;
+                background-size: 0 100%;
+                animation: title-stroke 0.3s 1s forwards;
+              }
+              .light {
+                background-image: linear-gradient(180deg,transparent 75%,$stroke-purple 0);
+                background-repeat: no-repeat;
+                background-size: 0 100%;                
+                animation: title-stroke 0.3s 1.3s forwards;
+              }
+              @keyframes title-stroke {
+                100% {
+                  background-size: 100% 100%;
+                }
+              }
+            }
           }
           .music-btn {
             display: inline-block;
@@ -296,6 +318,9 @@ html {
           font-size: 1.1rem;
           font-weight: 200;
           color: rgb(242, 17, 156);
+          @media screen and (max-width: $phone-size) {
+            display: none;
+          }
         }
       }
     }
@@ -309,7 +334,10 @@ html {
         box-sizing: border-box;
         font-size: 1.1rem;
         background: $post-item-color;
-        padding: 30px 30px;
+        padding: 30px 60px 30px 30px;
+        @media screen and (max-width: $phone-size) {
+          padding: 30px;
+        }
         .info {
           box-sizing: border-box;
           display: flex;
@@ -318,12 +346,25 @@ html {
           justify-content: center;
           text-decoration: none;
           color: $text-black;
-          .title {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            transform-origin: 0 50%;
-            @media screen and (max-width: $phone-size) {
-              font-size: 1.2rem;
+          .link {
+            text-decoration: none;
+            &:hover {
+              .title {
+                background-size: 100% 100%;
+              }
+            }
+            .title {
+              color: $text-black;
+              padding-bottom: 2px;
+              font-size: 2rem;
+              margin-bottom: 5px;
+              background-image: linear-gradient(180deg,transparent 65%,$stroke-purple 0);
+              background-repeat: no-repeat;
+              background-size: 0 100%;
+              transition: 0.3s;
+              @media screen and (max-width: $phone-size) {
+                font-size: 1.2rem;
+              }
             }
           }
           .time {
@@ -337,9 +378,9 @@ html {
             min-height: 40px;
             align-items: center;
             transition: 0.3s;
+            margin: 5px 0;
             .tag {
               display: inline-block;
-              line-height: 1.4rem;
               margin-right: 10px;
               text-decoration: none;
               color: $text-dark;
@@ -352,23 +393,10 @@ html {
         }
         .description {
           font-size: 1rem;
+          line-height: 1.6;
+          color: $text-dark;
           @media screen and (max-width: $phone-size) {
-            font-size: 0.8rem;
-          }
-        }
-        .link-btn {
-          margin-top: 14px;
-          display: inline-block;
-          font-size: 0.8rem;
-          font-weight: 300;
-          line-height: 40px;
-          width: 160px;
-          text-align: center;
-          text-decoration: none;
-          color: $text-white;
-          background: rgb(180, 19, 100);
-          @media screen and (max-width: $phone-size) {
-            width: 100%;
+            font-size: 0.9rem;
           }
         }
       }
@@ -491,7 +519,7 @@ html {
       box-sizing: border-box;
       width: 80%;
       min-width: 200px; // max-width: 980px;
-      padding: 30px 15px 45px 45px;
+      padding: 30px 15px 45px 30px;
       .comment-wrapper {
         margin-top: 40px;
         .comment-title {
@@ -506,7 +534,7 @@ html {
         width: 100%;
       }
       @media (max-width: 767px) {
-        padding: 15px;
+        padding: 30px;
       } // h1, h2, h3, h4, h5, h6 {
       //   transform: translate3d(0, 30px, 0);
       //   margin-top: -30px;
