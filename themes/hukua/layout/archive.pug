@@ -6,10 +6,8 @@ block content
   - var tagsList = list_tags({ show_count: false })
   - var archivesList = list_archives({ show_count: false })
 
-  div.archive
-    if !is_year()
-
-      h1 Archives
+  if !is_year()
+    div.archive
 
       if theme.atom
         p The feed is available via&nbsp;
@@ -18,7 +16,7 @@ block content
         br
 
       aside
-        h2 Categories
+        h2.title Categories
         if categoriesList
           != categoriesList
         else
@@ -26,7 +24,7 @@ block content
       br
 
       aside
-        h2 Tags
+        h2.title Tags
         if tagsList
           != tagsList
         else
@@ -34,25 +32,30 @@ block content
       br
 
       aside
-        h2 Archives
+        h2.title Archives
         if archivesList
           != archivesList
         else
           p None.
       br
 
-    else
+  else
+    div.selected-container
+      h1.selected-title= page.year + '/' + page.month
+      .recent-posts
+        each post in page.posts.sort('date', -1).limit(10).toArray()
+          .recent-post-item
+            div.info
+              a.link(href=config.root + post.path)
+                span.title= post.title
+              if post.date
+                time.time(datetime=post.date.toJSON())= date(post.date, date_format)
+              if (post.tags && post.tags.data.length > 0)
+                .tag-list
+                    each tag in post.tags.data
+                      a.tag(href=url_for(tag.path))= "#"+tag.name
+            if (post.description) 
+              .description= post.description
 
-      h1= page.month + '/' + page.year
-
-      - page.posts.each(function(article){
-        .archive-list-item
-          if article.link
-            a(href=url_for(article.link) target="_blank")= article.title || 'No Title'
-          else
-            a(href=url_for(article.path))= article.title || 'No Title'
-          time(datetime=date_xml(article.date))= date(article.date)
-      - })
-
-      div!= paginator()
+      div.pages-container!= paginator()
 

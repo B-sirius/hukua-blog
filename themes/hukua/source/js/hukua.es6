@@ -44,10 +44,10 @@ let throttleFn = function(fn, interval, _this, args) {
         // 展开动画
         mobileMenuContainer.style.height = fromHeight + 'px';
         let activeTl = new TimelineLite();
-        activeTl.to(mobileMenuContainer, 0.4, {
+        activeTl.to(mobileMenuContainer, 0.2, {
             width: '100%',
             ease: Power1.easeOut
-        }).to(mobileMenuContainer, 0.4, {
+        }).to(mobileMenuContainer, 0.2, {
             height: '100%',
             ease: Power1.easeOut
         });
@@ -68,9 +68,9 @@ let throttleFn = function(fn, interval, _this, args) {
         // 关闭动画
         let activeTl = new TimelineLite();
         TweenLite.defaultEase = Power1.easeOut;
-        activeTl.to(mobileMenuContainer, 0.4, {
+        activeTl.to(mobileMenuContainer, 0.2, {
             height: toHeight + 'px'
-        }).to(mobileMenuContainer, 0.4, {
+        }).to(mobileMenuContainer, 0.2, {
             width: 0
         });
     };

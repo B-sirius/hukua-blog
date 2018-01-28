@@ -25,6 +25,7 @@ html(lang=config.language)
         link(href=url, rel='stylesheet')
     link(href=config.root + 'img/favicon.png', rel="icon")
     <link href="https://fonts.googleapis.cnpmjs.org/css?family=Lato:100,300,400|Martel:900" rel="stylesheet">
+    <link rel="shortcut icon" href="http://7xrkxs.com1.z0.glb.clouddn.com/hukua/apple-icon.png">
 
   body
     .sidebar
@@ -65,6 +66,19 @@ html(lang=config.language)
             div!= body
           else
             block content
+      .footer
+        a.link-btn(href="https://github.com/B-sirius" target="_blank")
+          .mask
+          include ../svgs/github
+          span.text Github
+        a.link-btn(href="https://www.douban.com/people/121516026/" target="_blank")
+          .mask          
+          include ../svgs/douban
+          span.text 豆瓣
+        a.link-btn(href="mailto:padfoot_07@163.com")
+          .mask
+          include ../svgs/email
+          span.text Email
     //- scripts list from config.yml
     if theme.scripts !== undefined && theme.scripts.length > 0
       each url in theme.scripts
