@@ -94,6 +94,7 @@ html {
           transition: 0.3s;
           transform-origin: 0 50%;
           .menu-item-link {
+            font-family: 'Martel', cursive;
             position: absolute;
             left: 0;
             top: 0;
@@ -101,7 +102,7 @@ html {
             box-sizing: border-box;
             line-height: 60px;
             font-size: 1.4rem;
-            font-weight: 300;
+            font-weight: 400;
             text-decoration: none;
             color: $text-black;
             padding: 0 30px;
@@ -317,8 +318,8 @@ html {
         }
         .subtitle {
           margin: 0;
-          font-size: 1.1rem;
-          font-weight: 200;
+          font-size: 1.4rem;
+          font-weight: 100;
           color: rgb(242, 17, 156);
           @media screen and (max-width: $phone-size) {
             display: none;
@@ -404,12 +405,14 @@ html {
         .toc-wrapper {
           // 文章目录
           display: flex;
+          box-sizing: border-box;
           justify-content: center;
           align-items: center;
           width: calc((100vw - 240px) * 0.20);
           top: 50px;
           right: 0;
           z-index: 1;
+          padding-right: 20px;
           &.fixed {
             position: fixed;
           }

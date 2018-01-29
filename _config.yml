@@ -4,15 +4,15 @@
 
 # Site
 title: Sirius's blog
-subtitle:
-description:
+subtitle: 我练功发自真心
+description: 我练功发自真心
 author: sirius
-language:
-timezone:
+language: zh-Hans
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://b-sirius.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
