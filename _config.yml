@@ -4,8 +4,6 @@
 
 # Site
 title: Sirius's blog
-subtitle: 我练功发自真心
-description: 我练功发自真心
 author: sirius
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -77,7 +75,14 @@ theme: hukua
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+- type: git
+  repo: git@github.com:B-sirius/b-sirius.github.io.git
+  branch: master
+- type: rsync
+  host: 172.247.32.173
+  user: root
+  root: /opt/www/blog
+  port: 1307  
 
 server:
   compress: true

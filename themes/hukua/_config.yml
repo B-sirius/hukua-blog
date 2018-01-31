@@ -29,3 +29,8 @@ postScripts:
 - /js/post.js
 - https://cdn1.lncld.net/static/js/3.0.4/av-min.js
 - https://unpkg.com/valine/dist/Valine.min.js
+
+node_sass:
+  outputStyle: compressed
+  precision: 5
+  sourceComments: false

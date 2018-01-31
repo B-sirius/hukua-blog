@@ -56,9 +56,6 @@ html {
             stroke-dasharray: 0 300;
             stroke-width: 0;
           }
-          .set-1 {
-            transform: translate3d(-3px, 0, 0);
-          }
           .set-1 ellipse,
           .set-1 line,
           .set-1 path {
@@ -80,6 +77,31 @@ html {
               stroke-dasharray: 500 300;
             }
           }
+        }        
+      }
+      .logo-ie-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        background: $logo-bg-color;
+        .logo {
+          transform: scale(1.2);
+          ellipse,
+          line,
+          path {
+            stroke-width: 3px;
+          }
+          .set-1 ellipse,
+          .set-1 line,
+          .set-1 path {
+            stroke: $stroke-green;
+          }
+          .set-2 ellipse,
+          .set-2 line,
+          .set-2 path {
+            stroke: $stroke-purple;
+          }
         }
       }
       .menu-container {
@@ -94,7 +116,7 @@ html {
           transition: 0.3s;
           transform-origin: 0 50%;
           .menu-item-link {
-            font-family: 'Martel', cursive;
+            font-family: 'Martel', serif;
             position: absolute;
             left: 0;
             top: 0;
@@ -258,7 +280,7 @@ html {
             color: $text-white;
             line-height: 1;
             .bold {
-              font-family: 'Martel', cursive;
+              font-family: 'Martel', serif;
             }
             .light {
               font-weight: 100;
@@ -267,13 +289,13 @@ html {
               .bold {
                 background-image: linear-gradient(180deg, transparent 55%, $stroke-purple 55%, $stroke-purple 75%, transparent 0);
                 background-repeat: no-repeat;
-                background-size: 0 100%;
+                background-size: 0% 100%;
                 animation: title-stroke 0.3s 1s forwards;
               }
               .light {
                 background-image: linear-gradient(180deg, transparent 75%, $stroke-purple 0);
                 background-repeat: no-repeat;
-                background-size: 0 100%;
+                background-size: 0% 100%;
                 animation: title-stroke 0.3s 1.3s forwards;
               }
               @keyframes title-stroke {
@@ -363,7 +385,7 @@ html {
                   margin-bottom: 5px;
                   background-image: linear-gradient(180deg, transparent 65%, $stroke-purple 0);
                   background-repeat: no-repeat;
-                  background-size: 0 100%;
+                  background-size: 0% 100%;
                   transition: 0.3s;
                   @media screen and (max-width: $phone-size) {
                     font-size: 1.2rem;
@@ -504,9 +526,9 @@ html {
                 text-decoration: none;
                 color: $text-black;
                 background-image: linear-gradient(180deg, transparent 65%, $stroke-purple 0);
-                background-size: 0 100%;
+                background-size: 0% 100%;
                 background-repeat: no-repeat;
-                transition: 0.3s;
+                transition: background-size 0.3s;
                 &:hover {
                   background-size: 100% 100%;
                 }

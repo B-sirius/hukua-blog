@@ -1,9 +1,7 @@
-'use strict';
-
 let get = selector => document.querySelector(selector);
 
 // 节流函数
-let throttleFn = function(fn, interval, _this, args) {
+let throttleFn = function (fn, interval, _this, args) {
     let timeId = null;
     return function () {
         if (timeId !== null)
@@ -15,6 +13,33 @@ let throttleFn = function(fn, interval, _this, args) {
         }, interval);
     }
 };
+
+// 检测ie版本，非ie返回-1
+let getInternetExplorerVersion = function () {
+    let rv = -1;
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+        let ua = navigator.userAgent;
+        let re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+            rv = parseFloat(RegExp.$1);
+    }
+    else if (navigator.appName == 'Netscape') {
+        let ua = navigator.userAgent;
+        let re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+            rv = parseFloat(RegExp.$1);
+    }
+    return rv;
+};
+
+// ie不支持svg的animation，作退化处理
+(function() {
+    if (getInternetExplorerVersion() !== -1) {
+        let logoEl = document.querySelector('.logo-container');
+        logoEl.classList.add('logo-ie-container');
+        logoEl.classList.remove('logo-container');
+    }
+})();
 
 // 移动端菜单切换
 (function () {
