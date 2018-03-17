@@ -26,9 +26,9 @@ html(lang=config.language)
       if theme.postStylesheets !== undefined && theme.postStylesheets.length > 0
       each url in theme.postStylesheets
         link(href=url, rel='stylesheet')
-    link(href=config.root + 'img/favicon.png', rel="icon")
+    
     <link href="https://fonts.googleapis.cnpmjs.org/css?family=Lato:100,300,400|Martel:900,400" rel="stylesheet">
-    <link rel="shortcut icon" href="http://7xrkxs.com1.z0.glb.clouddn.com/hukua/apple-icon.png">
+    link(rel="shortcut icon" href=theme.favicon)
 
   body
     .sidebar
@@ -60,8 +60,7 @@ html(lang=config.language)
           h1.title
             span.bold Sirius’s
             span.light= " blog"
-          //- a#js-music-btn.music-btn(href="javascript:")
-          //-   include ../svgs/music
+          #js-music-container.music-container
         h2.subtitle 我练功发自真心
       #content-outer
         #content-inner.content-inner
@@ -74,6 +73,10 @@ html(lang=config.language)
           .mask
           include ../svgs/github
           span.text Github
+        a.link-btn(href="https://codepen.io/padfoot_07/" target="_blank")
+          .mask
+          include ../svgs/codepen
+          span.text CodePen
         a.link-btn(href="https://www.douban.com/people/121516026/" target="_blank")
           .mask          
           include ../svgs/douban

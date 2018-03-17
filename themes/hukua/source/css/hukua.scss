@@ -305,12 +305,11 @@ html {
               }
             }
           }
-          .music-btn {
+          .music-container {
             display: inline-block;
-            font-size: 0;
-            text-decoration: none;
+            width: 40px;
+            height: 40px;
             position: absolute;
-            transform: scale(0.35) translate3d(-51px, -64px, 0);
             cursor: pointer;
             @media screen and (max-width: $phone-size) {
               display: none;
@@ -621,7 +620,7 @@ html {
         height: $footer-height;
         z-index: -1;
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         @media screen and (max-width: $pad-size) {
@@ -639,8 +638,8 @@ html {
           text-decoration: none;
           margin: 0 20px;
           @media screen and (max-width: $pad-size) {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             margin: 10px;
           }
           .mask {

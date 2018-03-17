@@ -33,16 +33,16 @@ let getInternetExplorerVersion = function () {
 };
 
 // ie不支持svg的animation，作退化处理
-(function() {
+{
     if (getInternetExplorerVersion() !== -1) {
         let logoEl = document.querySelector('.logo-container');
         logoEl.classList.add('logo-ie-container');
         logoEl.classList.remove('logo-container');
     }
-})();
+}
 
 // 移动端菜单切换
-(function () {
+{
     const mainContent = get('#js-main');
     const header = get('#js-header');
     const menuTopbar = get('#js-mobile-topbar');
@@ -102,7 +102,65 @@ let getInternetExplorerVersion = function () {
 
     menuBtn.addEventListener('click', enableMenu);
     mobileMenuWrapper.addEventListener('click', disableMenu);
-})();
+}
+
+// 初始化音乐模块
+{
+    let loadScript = function (src) {
+        return new Promise(function (resolve, reject) {
+            let script = document.createElement('script');
+            script.src = src;
+            document.body.appendChild(script);
+
+            if (script.readyState) {  //IE
+                script.onreadystatechange = function () {
+                    if (script.readyState == "loaded" ||
+                        script.readyState == "complete") {
+                        script.onreadystatechange = null;
+                        resolve();
+                    }
+                };
+            } else {  //Others
+                script.onload = function () {
+                    resolve();
+                };
+            }
+        });
+
+        script.onerror = function (err) {
+            reject(err);
+        }
+    }
+
+    // 动态加载脚本
+    loadScript('https://cdn.bootcss.com/p5.js/0.6.0/p5.min.js').then(() => {
+        return loadScript('https://cdn.bootcss.com/p5.js/0.6.0/addons/p5.sound.min.js');
+    }, () => {
+        console.warn('bgm模块启动失败！( l: )')
+    }).then(() => {
+        console.log('bgm模块准备完成！ ( ᐛ ) ');
+        let musicP5 = new p5(s, 'js-music-container');
+    });
+
+    let s = function (p) {
+        p.preload = function() {
+
+        };
+
+        p.setup = function() {
+            p.createCanvas(40, 40);
+        }
+
+        p.draw = function() {
+            p.translate(p.width / 2, p.height / 2);
+            p.strokeWeight(1);
+            p.noFill();
+            p.stroke(242, 17, 156);
+
+            p.ellipse(0, 0, 20, 20);
+        }
+    }
+}
 
 // bgm播放
 // (function () {
