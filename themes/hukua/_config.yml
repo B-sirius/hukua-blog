@@ -23,6 +23,9 @@ postStylesheets:
 # scripts loaded in the end of the body
 scripts:
 - https://cdn.bootcss.com/gsap/latest/TweenMax.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.js
+- /js/lib/OBJLoader.js
+- /js/3dlogo.js
 - /js/hukua.js
 
 postScripts:
